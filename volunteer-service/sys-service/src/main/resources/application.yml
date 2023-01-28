@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: sys-service
+  # springboot 数据库配置
+  datasource:
+    url: jdbc:mysql://www.jjjyyds.club:3306/volunteer?useUnicode=yes&characterEncoding=utf8
+    username: zhaojian
+    password: Zj1204??
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# redis配置
+  redis:
+    database: 0
+    port: 6379
+    password: 123123
+    host: 127.0.0.1
+
+
+
+server:
+  port: 9001
+eureka:
+  client:
+    service-url:
+      -defaultZone: http://127.0.0.1:9000/eureka
+# mybatis 扫描路径配置
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+logging:
+  level:
+    com:
+      zj:
+        sys:
+          mapper: DEBUG
+
+
+volunteer:
+  is-open-verify: true
+

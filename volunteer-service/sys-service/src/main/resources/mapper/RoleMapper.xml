@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zj.sys.mapper.RoleMapper">
+
+    <resultMap id="role" type="com.zj.sys.entity.Role">
+        <id property="id" column="id" javaType="String" jdbcType="VARCHAR" ></id>
+        <result property="roleName" column="role_name" javaType="String" jdbcType="VARCHAR"></result>
+        <result property="belongId" column="belong_id" javaType="String" jdbcType="VARCHAR"></result>
+        <result property="introduce" column="introduce" javaType="String" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <insert id="insertRole" parameterType="com.zj.sys.dto.RoleDto">
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="roleName != null">
+                role_name,
+            </if>
+            <if test="belongId != null">
+                belong_id,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="roleName != null">
+                #{roleName},
+            </if>
+            <if test="belongId != null">
+                #{belongId},
+            </if>
+            <if test="introduce != null">
+                #{introduce},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="selectRoleList" parameterType="com.zj.sys.dto.RoleDto" resultMap="role">
+        select * from role
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="roleName != null">
+                and role_name like concat('%',#{roleName},'%')
+            </if>
+            <if test="belongId != null">
+                and belong_id = #{belongId}
+            </if>
+            <if test="introduce != null">
+                and introduce like concat('%',#{introduce},'%')
+            </if>
+        </where>
+    </select>
+
+
+    <select id="selectRoleById" parameterType="string" resultType="com.zj.sys.entity.Role">
+        select * from role where id = #{id}
+    </select>
+</mapper>

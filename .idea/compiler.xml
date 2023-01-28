@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-service" />
+        <module name="volunteer-common" />
+        <module name="common-service" />
+        <module name="gateway-service" />
+        <module name="common-config" />
+        <module name="redis-service" />
+        <module name="sys-api" />
+        <module name="sys-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="socket-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common-config" options="-parameters" />
+      <module name="common-service" options="-parameters" />
+      <module name="eureka-service" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+      <module name="redis-service" options="-parameters" />
+      <module name="socket-service" options="-parameters" />
+      <module name="sys-api" options="-parameters" />
+      <module name="sys-service" options="-parameters" />
+      <module name="volunteer-api" options="-parameters" />
+      <module name="volunteer-common" options="-parameters" />
+      <module name="volunteer-service" options="-parameters" />
+    </option>
+  </component>
+</project>
