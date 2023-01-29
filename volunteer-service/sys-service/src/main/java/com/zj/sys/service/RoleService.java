@@ -1,6 +1,6 @@
 package com.zj.sys.service;
 
-import com.zj.entity.Result;
+import com.zj.sys.config.Result;
 import com.zj.sys.dto.RoleDto;
 import com.zj.sys.entity.Role;
 

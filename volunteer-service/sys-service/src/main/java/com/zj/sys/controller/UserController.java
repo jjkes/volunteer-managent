@@ -2,15 +2,14 @@ package com.zj.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mysql.cj.util.StringUtils;
-import com.zj.config.BaseController;
-import com.zj.config.ControllerUtils;
-import com.zj.entity.LoginUser;
-import com.zj.entity.Result;
-import com.zj.enums.CommonEnum;
 import com.zj.enums.StateEnum;
+import com.zj.sys.config.BaseController;
+import com.zj.sys.config.ControllerUtils;
+import com.zj.sys.config.Result;
 import com.zj.sys.dto.TokenUser;
 import com.zj.sys.dto.UserDto;
 import com.zj.sys.dto.update.Update;
+import com.zj.sys.entity.LoginUser;
 import com.zj.sys.service.UserService;
 import com.zj.sys.util.RedisUtils;
 import com.zj.sys.util.VerifyImgUtil;
@@ -36,9 +35,9 @@ import java.io.IOException;
  */
 @BaseController(value = "/sys/user/")
 public class UserController extends ControllerUtils {
+    private static boolean isOpenVerify;
     private final UserService userService;
     private final RedisUtils redisUtils;
-
 
     public UserController(RedisUtils redisUtils, UserService userService) {
         this.redisUtils = redisUtils;
@@ -58,12 +57,12 @@ public class UserController extends ControllerUtils {
         // 验证随机码不为空
         boolean nullOrEmpty = StringUtils.isNullOrEmpty(randomCode);
         if (nullOrEmpty) {
-             result.setResultEnum(StateEnum.VERIFY_RANDOM_STR_IS_NULL);
-             return result.toJSON();
+            result.setResultEnum(StateEnum.VERIFY_RANDOM_STR_IS_NULL);
+            return result.toJSON();
         }
         String imgCode = VerifyImgUtil.getImgCode(randomCode);
         BufferedImage textImage = VerifyImgUtil.getTextImage(imgCode);
-        redisUtils.set(randomCode,imgCode);
+        redisUtils.set(randomCode, imgCode);
         response.setDateHeader("Expires", 0);
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
         response.addHeader("Cache-Control", "post-check=0, pre-check=0");
@@ -78,9 +77,8 @@ public class UserController extends ControllerUtils {
         return null;
     }
 
-    private static boolean isOpenVerify;
     @Value("${volunteer.is-open-verify}")
-    private void setIsOpenVerify(boolean b){
+    private void setIsOpenVerify(boolean b) {
         isOpenVerify = b;
     }
 
@@ -96,7 +94,7 @@ public class UserController extends ControllerUtils {
         String s = redisUtils.get(loginUser.getRandomCode());
         System.err.println(s);
 //        s=null;
-        if(isOpenVerify){
+        if (isOpenVerify) {
             if (!loginUser.getVerifyCode().equalsIgnoreCase(s)) {
                 return new Result<>().setResultEnum(StateEnum.VERIFY_RANDOM_ERROR).toJSON();
             }
@@ -128,7 +126,7 @@ public class UserController extends ControllerUtils {
     }
 
     @GetMapping("changeUserRole")
-    public JSONObject changeUserRole(HttpServletRequest request, @Validated(Update.class ) UserDto userDto){
+    public JSONObject changeUserRole(HttpServletRequest request, @Validated(Update.class) UserDto userDto) {
         TokenUser tokenUser = solveToken(request);
         String roleId = tokenUser.getRoleId();
         // TODO 验证是否符合权限

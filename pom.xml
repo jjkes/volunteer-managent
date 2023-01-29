@@ -13,7 +13,6 @@
         <module>common-service</module>
         <module>volunteer-api</module>
         <module>volunteer-service</module>
-        <module>common-config</module>
         <module>redis-service</module>
     </modules>
 

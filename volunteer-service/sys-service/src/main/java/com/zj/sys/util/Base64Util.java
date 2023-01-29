@@ -1,8 +1,5 @@
 package com.zj.sys.util;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
@@ -26,7 +23,7 @@ public class Base64Util {
      * @author 赵健
      * @date 2023/1/25 15:25
      */
-    public static String encodeBase64(String str){
+    public static String encodeBase64(String str) {
         String s = null;
         try {
             s = Base64.getEncoder().encodeToString(str.getBytes("UTF-8"));
@@ -44,10 +41,10 @@ public class Base64Util {
      * @author 赵健
      * @date 2023/1/25 15:26
      */
-    public static String decodeBase64(String str){
+    public static String decodeBase64(String str) {
         byte[] decode = Base64.getDecoder().decode(str);
         try {
-            return new String(decode,"UTF-8");
+            return new String(decode, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
@@ -61,7 +58,7 @@ public class Base64Util {
      * @author 赵健
      * @date 2023/1/25 15:22
      */
-    public static String encodingByte(byte[] bytes){
+    public static String encodingByte(byte[] bytes) {
         return Base64.getEncoder().encodeToString(bytes);
     }
 
@@ -72,7 +69,7 @@ public class Base64Util {
      * @author 赵健
      * @date 2023/1/25 15:23
      */
-    public static byte[] decodeToByte(String str){
+    public static byte[] decodeToByte(String str) {
         return Base64.getDecoder().decode(str);
     }
 

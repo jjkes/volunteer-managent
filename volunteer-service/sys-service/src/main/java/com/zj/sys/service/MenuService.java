@@ -1,6 +1,6 @@
 package com.zj.sys.service;
 
-import com.zj.entity.Result;
+import com.zj.sys.config.Result;
 import com.zj.sys.dto.MenuDto;
 import com.zj.sys.dto.TokenUser;
 import com.zj.sys.entity.Menu;
@@ -17,13 +17,14 @@ import java.util.List;
 public interface MenuService {
 
     /**
-     * @description: 插入一条菜单信息
-     * @return com.zj.entity.Result<java.lang.Object>
      * @param menuDto menu表的传输实体
+     * @return com.zj.entity.Result<java.lang.Object>
+     * @description: 插入一条菜单信息
      * @author 赵健
      * @date 2023/1/13 20:42
      */
     Result<Object> insertMenu(MenuDto menuDto);
+
     /**
      * @description: 获取当前登录用户的菜单列表
      * @return: com.zj.entity.Result
@@ -32,6 +33,7 @@ public interface MenuService {
      * @date 2023/1/13 20:43
      */
     Result<List<Menu>> getUserMenuList(TokenUser tokenUser);
+
     /**
      * @description: 通过将角色于菜单绑定
      * @return: com.zj.entity.Result
@@ -39,10 +41,11 @@ public interface MenuService {
      * @author 赵健
      * @date 2023/1/13 20:43
      */
-    Result bingingMenuToRole(String roleId,String menuIds);
+    Result bingingMenuToRole(String roleId, String menuIds);
+
     /**
      * @description: 查询角色列表
-     * @return: com.zj.entity.Result<java.util.List<com.zj.sys.entity.Menu>>
+     * @return: com.zj.entity.Result<java.util.List < com.zj.sys.entity.Menu>>
      * @param: [menuDto]
      * @author 赵健
      * @date 2023/1/13 20:44

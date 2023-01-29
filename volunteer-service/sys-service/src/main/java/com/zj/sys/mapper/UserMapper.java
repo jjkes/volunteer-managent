@@ -1,7 +1,7 @@
 package com.zj.sys.mapper;
 
-import com.zj.entity.LoginUser;
 import com.zj.sys.dto.UserDto;
+import com.zj.sys.entity.LoginUser;
 import com.zj.sys.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,7 +15,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
     User getUserById(String id);
+
     int updateUser(UserDto user);
+
     int insertUser(User user);
+
     User getLoginUser(LoginUser loginUser);
 }

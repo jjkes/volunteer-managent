@@ -1,7 +1,6 @@
-package com.zj.config;
+package com.zj.sys.config;
 
 import org.springframework.core.annotation.AliasFor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

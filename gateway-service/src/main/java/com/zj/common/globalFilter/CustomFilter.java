@@ -1,6 +1,5 @@
 package com.zj.common.globalFilter;
 
-import com.alibaba.fastjson2.JSON;
 import com.zj.sys.dto.TokenUser;
 import com.zj.utils.JwtTokenUtil;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -20,7 +19,7 @@ import java.net.URI;
 public class CustomFilter implements GlobalFilter, Ordered {
     private static final String TOKEN_PREFIX = "AuthorizationToken";
 
-    private static final String[] passList = new String[]{"getVerifyImg","login"};
+    private static final String[] passList = new String[]{"getVerifyImg", "login"};
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -29,7 +28,7 @@ public class CustomFilter implements GlobalFilter, Ordered {
         Boolean flag = true;
         HttpStatus httpStatus = null;
         URI uri = request.getURI();
-        if(uri.getPath().contains(passList[0])){
+        if (uri.getPath().contains(passList[0])) {
             return chain.filter(exchange);
         }
         if (!uri.getPath().contains("login")) {
@@ -55,15 +54,15 @@ public class CustomFilter implements GlobalFilter, Ordered {
                 try {
                     tokenUserFromToken = JwtTokenUtil.getTokenUserFromToken(token);
                 } catch (Exception e) {
-                    System.err.println("解析异常"+e.getMessage());
+                    System.err.println("解析异常" + e.getMessage());
                     flag = false;
                     httpStatus = HttpStatus.UNAUTHORIZED;
                 }
                 if (tokenUserFromToken != null) {
                     String newToken = JwtTokenUtil.refreshToken(token);
-                    if(newToken != null){
-                        response.getHeaders().set("Access-Control-Expose-Headers","AuthorizationToken");
-                        response.getHeaders().set("AuthorizationToken",newToken);
+                    if (newToken != null) {
+                        response.getHeaders().set("Access-Control-Expose-Headers", "AuthorizationToken");
+                        response.getHeaders().set("AuthorizationToken", newToken);
                     }
                 } else {
                     flag = false;

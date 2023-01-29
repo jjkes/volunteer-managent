@@ -137,7 +137,7 @@
     </select>
 
 
-    <select id="getLoginUser" parameterType="com.zj.entity.LoginUser" resultMap="userResult">
+    <select id="getLoginUser" parameterType="com.zj.sys.entity.LoginUser" resultMap="userResult">
         select
             <include refid="column_user"></include>
         from user

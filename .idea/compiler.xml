@@ -11,13 +11,13 @@
         <module name="volunteer-common" />
         <module name="common-service" />
         <module name="gateway-service" />
-        <module name="common-config" />
         <module name="redis-service" />
         <module name="sys-api" />
         <module name="sys-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common-config" target="1.8" />
       <module name="socket-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>

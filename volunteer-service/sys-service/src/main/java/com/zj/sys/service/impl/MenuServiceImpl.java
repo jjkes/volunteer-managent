@@ -1,7 +1,7 @@
 package com.zj.sys.service.impl;
 
-import com.zj.entity.Result;
 import com.zj.enums.StateEnum;
+import com.zj.sys.config.Result;
 import com.zj.sys.dto.MenuDto;
 import com.zj.sys.dto.RoleMenu;
 import com.zj.sys.dto.TokenUser;
@@ -41,9 +41,9 @@ public class MenuServiceImpl implements MenuService {
         Result result = new Result<>();
         menuDto.setId(UUID.randomUUID().toString());
         int i = menuMapper.insertMenu(menuDto);
-        if(i>0){
+        if (i > 0) {
             result.setResultEnum(StateEnum.SUCCESS);
-        }else{
+        } else {
             result.setResultEnum(StateEnum.FAILED);
         }
         return result;
@@ -61,11 +61,11 @@ public class MenuServiceImpl implements MenuService {
         Result<List<Menu>> result = new Result<>();
         String roleId = tokenUser.getRoleId();
         List<Menu> menuList = menuMapper.getMenuListByRoleId(roleId);
-        if(!ObjectUtils.isEmpty(menuList)){
+        if (!ObjectUtils.isEmpty(menuList)) {
             // TODO 写出递归结构的菜单列表，写一个vo承载这些结构
             result.setResultEnum(StateEnum.SUCCESS);
             result.setData(menuList);
-        }else{
+        } else {
             result.setResultEnum(StateEnum.FAILED);
         }
         return result;
@@ -85,13 +85,13 @@ public class MenuServiceImpl implements MenuService {
         menuMapper.deleteMenuRoleByRoleId(roleId);
         String[] menuIdArr = menuIds.split(",");
         List<RoleMenu> menuIdList = new ArrayList<>();
-        for (String menuId : menuIdArr){
-            menuIdList.add(new RoleMenu(UUID.randomUUID().toString(), menuId,roleId));
+        for (String menuId : menuIdArr) {
+            menuIdList.add(new RoleMenu(UUID.randomUUID().toString(), menuId, roleId));
         }
         int i = menuMapper.bindingMenuToRole(menuIdList);
-        if(i>0){
+        if (i > 0) {
             result.setResultEnum(StateEnum.SUCCESS);
-        }else{
+        } else {
             result.setResultEnum(StateEnum.FAILED);
         }
         return result;
@@ -99,7 +99,7 @@ public class MenuServiceImpl implements MenuService {
 
     /**
      * @description: 查询角色列表
-     * @return: com.zj.entity.Result<java.util.List<com.zj.sys.entity.Menu>>
+     * @return: com.zj.entity.Result<java.util.List < com.zj.sys.entity.Menu>>
      * @param: [menuDto]
      * @author 赵健
      * @date 2023/1/13 20:44

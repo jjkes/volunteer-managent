@@ -1,7 +1,6 @@
 package com.zj.sys.config;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zj.entity.Result;
 import com.zj.enums.StateEnum;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -22,7 +21,7 @@ import java.util.List;
 @ResponseBody
 public class GlobalException extends Exception {
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public JSONObject notNullFilter( MethodArgumentNotValidException e) {
+    public JSONObject notNullFilter(MethodArgumentNotValidException e) {
         Result<List<String>> result = new Result<>();
         // 错误类型表单验证错误
         result.setResultEnum(StateEnum.FROM_FAIL);

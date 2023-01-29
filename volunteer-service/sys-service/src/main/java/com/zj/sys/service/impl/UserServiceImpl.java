@@ -1,14 +1,14 @@
 package com.zj.sys.service.impl;
 
-import com.zj.entity.Result;
 import com.zj.enums.StateEnum;
+import com.zj.sys.config.Result;
 import com.zj.sys.dto.TokenUser;
-import com.zj.entity.LoginUser;
 import com.zj.sys.dto.UserDto;
+import com.zj.sys.entity.LoginUser;
 import com.zj.sys.entity.User;
 import com.zj.sys.mapper.UserMapper;
 import com.zj.sys.service.UserService;
-import com.zj.utils.JwtTokenUtil;
+import com.zj.sys.util.JwtTokenUtil;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @description 用户登录，身份校验成功，返回值Result的data中返回token
-     * @return com.zj.entity.Result<java.lang.String>
      * @param loginUser 登录实体类
+     * @return com.zj.entity.Result<java.lang.String>
+     * @description 用户登录，身份校验成功，返回值Result的data中返回token
      * @author 赵健
      * @date 2022/9/25 22:46
      */
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     public Result<String> clientLogin(LoginUser loginUser) {
         Result<String> result = new Result<>();
         User user = userMapper.getLoginUser(loginUser);
-        if(user!=null){
+        if (user != null) {
             TokenUser tokenUser = new TokenUser();
             tokenUser.setId(user.getId());
             tokenUser.setRoleId(user.getRoleId());
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
             String token = JwtTokenUtil.generateToken(tokenUser);
             result.setData(token);
             result.setResultEnum(StateEnum.SUCCESS);
-        }else{
+        } else {
             result.setResultEnum(StateEnum.LOGIN_FAILED);
         }
         return result;
@@ -55,9 +55,9 @@ public class UserServiceImpl implements UserService {
     public Result updateUser(UserDto userDto) {
         Result result = new Result();
         int i = userMapper.updateUser(userDto);
-        if(i>0){
+        if (i > 0) {
             result.setResultEnum(StateEnum.SUCCESS);
-        }else{
+        } else {
             result.setResultEnum(StateEnum.FAILED);
         }
         return result;

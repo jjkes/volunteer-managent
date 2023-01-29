@@ -1,8 +1,7 @@
-package com.zj.entity;
+package com.zj.sys.entity;
 
 
 import com.zj.sys.utils.ShaUtil;
-import com.zj.utils.PwdUtil;
 
 import javax.validation.constraints.NotEmpty;
 

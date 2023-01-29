@@ -1,9 +1,9 @@
 package com.zj.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zj.config.BaseController;
-import com.zj.config.ControllerUtils;
-import com.zj.entity.Result;
+import com.zj.sys.config.BaseController;
+import com.zj.sys.config.ControllerUtils;
+import com.zj.sys.config.Result;
 import com.zj.sys.dto.RoleDto;
 import com.zj.sys.dto.TokenUser;
 import com.zj.sys.dto.insert.Insert;
@@ -39,7 +39,7 @@ public class RoleController extends ControllerUtils {
      */
 
     @PostMapping(value = "insertRole")
-    public JSONObject insertRole(HttpServletRequest request, @RequestBody @Validated(Insert.class) RoleDto roleDto){
+    public JSONObject insertRole(HttpServletRequest request, @RequestBody @Validated(Insert.class) RoleDto roleDto) {
         TokenUser tokenUser = solveToken(request);
         String roleId = tokenUser.getRoleId();
         // TODO 添加验证角色添加的权限
@@ -55,7 +55,7 @@ public class RoleController extends ControllerUtils {
      * @date 2023/1/13 22:14
      */
     @GetMapping("selectRoles")
-    public JSONObject selectRoles(@RequestBody RoleDto roleDto){
+    public JSONObject selectRoles(@RequestBody RoleDto roleDto) {
         return roleService.selectRoleList(roleDto).toJSON();
     }
 }

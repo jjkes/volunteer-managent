@@ -1,7 +1,5 @@
 package com.zj.sys.util;
 
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -28,28 +26,27 @@ public class RedisUtils {
         this.stringRedisTemplate = stringRedisTemplate;
     }
 
-    private Boolean getLock(String key){
+    private Boolean getLock(String key) {
         Boolean aBoolean = stringRedisTemplate.opsForValue().setIfAbsent(key, "1", EXPIRE_TIME, TimeUnit.SECONDS);
         return aBoolean;
     }
 
-    private void unlock(String key){
+    private void unlock(String key) {
         Boolean delete = stringRedisTemplate.delete(key);
     }
 
-    public void set(String key, String value){
-        stringRedisTemplate.opsForValue().set(key,value);
+    public void set(String key, String value) {
+        stringRedisTemplate.opsForValue().set(key, value);
     }
-    public void setStringValues(String key, Object value, Long time, TimeUnit timeUnit){
+
+    public void setStringValues(String key, Object value, Long time, TimeUnit timeUnit) {
 //        stringRedisTemplate.opsForValue().set(key, JSONObject.toJSONString(value),time,timeUnit);
 //        stringRedisTemplate.opsForValue().setIfAbsent();
     }
 
-    public String get(String key){
+    public String get(String key) {
         return stringRedisTemplate.opsForValue().get(key);
     }
-
-
 
 
 }
