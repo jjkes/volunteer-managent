@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author 赵健
  * @version 1.0
- * @description: TODO
+ * @description: 全局异常拦截
  * @date 2023/1/13 14:28
  */
 @ControllerAdvice
