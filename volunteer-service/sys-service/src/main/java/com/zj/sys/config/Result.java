@@ -1,7 +1,7 @@
 package com.zj.sys.config;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zj.enums.StateEnum;
+import com.zj.common.constant.StateEnum;
 import lombok.Data;
 
 @Data

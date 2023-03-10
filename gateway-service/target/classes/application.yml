@@ -27,3 +27,7 @@ spring:
           uri: lb://sys-service
           predicates:
             - Path=/sys/**
+        - id: school
+          uri: lb://school-service
+          predicates:
+            - Path=/school/**

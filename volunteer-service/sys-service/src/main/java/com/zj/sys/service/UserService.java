@@ -3,6 +3,7 @@ package com.zj.sys.service;
 import com.zj.sys.config.Result;
 import com.zj.sys.dto.UserDto;
 import com.zj.sys.entity.LoginUser;
+import com.zj.sys.entity.User;
 
 /**
  * @author a1204
@@ -22,4 +23,7 @@ public interface UserService {
     Result<String> clientLogin(LoginUser loginUser);
 
     Result updateUser(UserDto userDto);
+
+
+    User getUserByUsername(String username);
 }

@@ -143,4 +143,11 @@
         from user
         where account = #{account} and password = #{password}
     </select>
+
+
+    <select id="getUserByUsername" parameterType="String" resultMap="userResult">
+        select <include refid="column_user"></include>
+        from user
+        where account = #{username}
+    </select>
 </mapper>

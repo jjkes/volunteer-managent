@@ -1,8 +1,9 @@
 package com.zj.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mysql.cj.util.StringUtils;
-import com.zj.enums.StateEnum;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.zj.common.constant.StateEnum;
 import com.zj.sys.config.BaseController;
 import com.zj.sys.config.ControllerUtils;
 import com.zj.sys.config.Result;
@@ -10,21 +11,28 @@ import com.zj.sys.dto.TokenUser;
 import com.zj.sys.dto.UserDto;
 import com.zj.sys.dto.update.Update;
 import com.zj.sys.entity.LoginUser;
+import com.zj.sys.entity.User;
 import com.zj.sys.service.UserService;
-import com.zj.sys.util.RedisUtils;
+import com.zj.sys.util.RedisUtil;
 import com.zj.sys.util.VerifyImgUtil;
+import com.zj.sys.webService.SchoolService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 
 /**
@@ -37,11 +45,14 @@ import java.io.IOException;
 public class UserController extends ControllerUtils {
     private static boolean isOpenVerify;
     private final UserService userService;
-    private final RedisUtils redisUtils;
 
-    public UserController(RedisUtils redisUtils, UserService userService) {
-        this.redisUtils = redisUtils;
+    private final RedisUtil redisUtil;
+    private final SchoolService schoolService;
+
+    public UserController(UserService userService, RedisUtil redisUtil, SchoolService schoolService) {
         this.userService = userService;
+        this.redisUtil = redisUtil;
+        this.schoolService = schoolService;
     }
 
     /**
@@ -55,14 +66,15 @@ public class UserController extends ControllerUtils {
     public JSONObject getVerifyImg(String randomCode, HttpServletResponse response) {
         Result result = new Result();
         // 验证随机码不为空
-        boolean nullOrEmpty = StringUtils.isNullOrEmpty(randomCode);
+//        boolean nullOrEmpty = StringUtils.isNullOrEmpty(randomCode);
+        boolean nullOrEmpty = true;
         if (nullOrEmpty) {
             result.setResultEnum(StateEnum.VERIFY_RANDOM_STR_IS_NULL);
             return result.toJSON();
         }
         String imgCode = VerifyImgUtil.getImgCode(randomCode);
         BufferedImage textImage = VerifyImgUtil.getTextImage(imgCode);
-        redisUtils.set(randomCode, imgCode);
+        redisUtil.setStringValue(randomCode, imgCode);
         response.setDateHeader("Expires", 0);
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
         response.addHeader("Cache-Control", "post-check=0, pre-check=0");
@@ -91,7 +103,7 @@ public class UserController extends ControllerUtils {
      */
     @PostMapping(value = "login")
     public JSONObject login(@RequestBody LoginUser loginUser, HttpServletResponse response) {
-        String s = redisUtils.get(loginUser.getRandomCode());
+        String s = redisUtil.getStringValue(loginUser.getRandomCode());
         System.err.println(s);
 //        s=null;
         if (isOpenVerify) {
@@ -116,13 +128,23 @@ public class UserController extends ControllerUtils {
      * @date 2023/1/20 17:43
      */
 
+    @HystrixCommand(fallbackMethod = "returnErrorMsgForGetUserName", commandProperties = {@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "30")
+//            @HystrixProperty(name = "")
+    })
     @GetMapping("getUserName")
     public JSONObject getUserName(HttpServletRequest request) {
         TokenUser tokenUser = solveToken(request);
         String username = tokenUser.getUsername();
         Result<String> objectResult = new Result<>();
         objectResult.setData(username);
+        System.err.println(schoolService.schoolInsert());
+//        int a=1/0;
         return objectResult.toJSON();
+    }
+
+    public JSONObject returnErrorMsgForGetUserName(HttpServletRequest request) {
+        System.err.println("触发熔断");
+        return new Result<>().setResultEnum(StateEnum.VERIFY_RANDOM_ERROR).toJSON();
     }
 
     @GetMapping("changeUserRole")
@@ -132,5 +154,29 @@ public class UserController extends ControllerUtils {
         // TODO 验证是否符合权限
         Result result = userService.updateUser(userDto);
         return result.toJSON();
+    }
+
+    @GetMapping("upLoadFile")
+    public String upLoadFile(MultipartFile file) {
+        File file1 = new File("C:\\Users\\a1204\\Desktop\\git\\git.text");
+        try (OutputStream opt = new FileOutputStream(file1)) {
+            file.transferTo(file1);
+            opt.flush();
+            byte[] bytes = file.getBytes();
+            opt.write(bytes);
+            opt.flush();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return file.getContentType();
+    }
+
+    @GetMapping(value = "getUserByUsername")
+    public User getUserByUsername(String username) {
+        System.err.println("dssfadf");
+        User user = userService.getUserByUsername(username);
+        return user;
     }
 }

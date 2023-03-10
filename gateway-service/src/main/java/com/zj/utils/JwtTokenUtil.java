@@ -91,7 +91,6 @@ public class JwtTokenUtil {
 
     public static void main(String[] args) {
         TokenUser tokenUser = new TokenUser();
-        tokenUser.setUsername("dsfsdf");
         String s = generateToken(tokenUser);
         System.err.println("token="+s);
         TokenUser tokenUserFromToken = getTokenUserFromToken(s);

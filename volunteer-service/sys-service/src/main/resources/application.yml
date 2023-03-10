@@ -1,4 +1,6 @@
 spring:
+  jmx:
+    default-domain: sys-service
   application:
     name: sys-service
   # springboot 数据库配置
@@ -13,6 +15,10 @@ spring:
     port: 6379
     password: 123123
     host: 127.0.0.1
+    jedis:
+      pool:
+        max-active: 50
+        max-wait: 5000
 
 
 
@@ -34,5 +40,9 @@ logging:
 
 
 volunteer:
-  is-open-verify: true
+  is-open-verify: false
 
+redis:
+  jedis:
+    pool:
+      password: 123123

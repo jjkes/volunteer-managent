@@ -1,7 +1,7 @@
 package com.zj.sys.config;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zj.enums.StateEnum;
+import com.zj.common.constant.StateEnum;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

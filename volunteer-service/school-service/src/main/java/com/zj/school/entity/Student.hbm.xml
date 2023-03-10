@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.zj.school.entity.Student" table="Student">
+        <id name="id" type="java.lang.String">
+            <column name="SId"></column>
+
+        </id>
+        <property name="name">
+            <column name="Sname"></column>
+        </property>
+        <property name="age"  >
+            <column name="Sage"></column>
+        </property>
+        <property name="sex" >
+            <column name="Ssex"></column>
+        </property>
+        <set name="sc" table="SC" lazy="extra">
+            <key column="SId"></key>
+            <one-to-many class="com.zj.school.entity.Sc"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

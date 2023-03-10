@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.username">zhaojian</property>
+        <property name="hibernate.connection.password">Zj1204??</property>
+        <property name="hibernate.connection.url">jdbc:mysql://www.jjjyyds.club:3306/test?useUnicode=true&amp;characterEncoding=utf8</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <property name="c3p0.max_size">30</property>
+        <property name="c3p0.min_size">10</property>
+        <property name="c3p0.timeout">5000</property>
+        <property name="c3p0.max_statements">300000</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <mapping resource="com/zj/school/entity/Student.hbm.xml"></mapping>
+        <mapping resource="com/zj/school/entity/Course.hbm.xml"></mapping>
+        <mapping resource="com/zj/school/entity/Sc.hbm.xml"></mapping>
+        <mapping resource="com/zj/school/entity/Teacher.hbm.xml"></mapping>
+    </session-factory>
+</hibernate-configuration>

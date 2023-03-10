@@ -1,6 +1,6 @@
 package com.zj.sys.service.impl;
 
-import com.zj.enums.StateEnum;
+import com.zj.common.constant.StateEnum;
 import com.zj.sys.config.Result;
 import com.zj.sys.dto.TokenUser;
 import com.zj.sys.dto.UserDto;
@@ -61,5 +61,17 @@ public class UserServiceImpl implements UserService {
             result.setResultEnum(StateEnum.FAILED);
         }
         return result;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        User user = null;
+        try {
+            user = userMapper.getUserByUsername(username);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }

@@ -14,7 +14,12 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
-
+/**
+* @discription 统一拦截器
+* @author 赵健
+* @date 2023/2/2 10:22
+* @version 1.0
+*/
 @Component
 public class CustomFilter implements GlobalFilter, Ordered {
     private static final String TOKEN_PREFIX = "AuthorizationToken";

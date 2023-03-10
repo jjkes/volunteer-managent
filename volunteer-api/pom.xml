@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>sys-api</module>
+        <module>school-api</module>
     </modules>
 
     <properties>

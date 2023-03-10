@@ -1,7 +1,7 @@
 package com.zj.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zj.enums.StateEnum;
+import com.zj.common.constant.StateEnum;
 import com.zj.sys.config.BaseController;
 import com.zj.sys.config.ControllerUtils;
 import com.zj.sys.config.Result;
