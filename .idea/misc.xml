@@ -12,10 +12,15 @@
     </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/volunteer-service/file-service" />
+    <file type="web" url="file://$PROJECT_DIR$/volunteer-service/sys-service" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/volunteer-service/file-servcie/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

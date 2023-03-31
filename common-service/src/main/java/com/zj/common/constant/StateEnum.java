@@ -7,7 +7,7 @@ public enum StateEnum {
     FROM_FAIL(2,"表单验证失败"),
 
     AUTHORITY_FAIL(3,"您无法访问此功能，因为没有相关权限"),
-
+    FILE_SAVE_ERROR(200,"文件保存失败！"),
 
     /**** sys_service系统错误*****/
     // 登录相关
@@ -15,6 +15,9 @@ public enum StateEnum {
     LOGIN_PARAMS(102,"账号或密码为空"),
     VERIFY_RANDOM_STR_IS_NULL(103,"验证随机码为空"),
     VERIFY_RANDOM_ERROR(114,"验证码错误"),
+
+
+
     ;
 
 

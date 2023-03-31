@@ -46,6 +46,23 @@ public class JwtTokenUtil {
                 .sign(Algorithm.HMAC384(JWT_TOKEN_PREFIX));
         return token;
     }
+    /**
+     * <h1>生成包含redisKey的token</h1>
+     * @author 赵健
+     * @date 2023/3/12 10:46
+     */
+    public static String generateTokenForStr(String redisKey){
+        Instant nowInstant = Instant.now();
+        Instant expireInstant = nowInstant.plusSeconds(expireSecond);
+        ZonedDateTime dateTime = expireInstant.atZone(ZoneId.systemDefault());
+        System.err.println(dateTime);
+        String token = JWT.create()
+                .withClaim("redisKey",redisKey)
+                .withExpiresAt(expireInstant)
+                .withIssuedAt(nowInstant)
+                .sign(Algorithm.HMAC384(JWT_TOKEN_PREFIX));
+        return token;
+    }
 
     public static TokenUser getTokenUserFromToken(String token){
         JWTVerifier build = JWT.require(Algorithm.HMAC384(JWT_TOKEN_PREFIX)).build();

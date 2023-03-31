@@ -4,6 +4,7 @@ import com.zj.auth.AuthServiceApplication;
 import com.zj.auth.service.AuthService;
 import com.zj.auth.webService.SysService;
 import com.zj.common.config.Result;
+import com.zj.common.exception.MyAuthException;
 import com.zj.sys.entity.LoginUser;
 import com.zj.sys.entity.User;
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class LoginTest{
     private AuthService authService;
 
     @Test
-    public void LoginTest() {
+    public void LoginTest() throws MyAuthException {
         ResponseEntity<Result> admin = authService.getAuthToken(new LoginUser("admin", "123123", "123", "123"));
         System.err.println(admin);
     }

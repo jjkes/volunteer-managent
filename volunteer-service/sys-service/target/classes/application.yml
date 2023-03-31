@@ -23,7 +23,7 @@ spring:
 
 
 server:
-  port: 9001
+  port: 9009
 eureka:
   client:
     service-url:
@@ -44,5 +44,4 @@ volunteer:
 
 redis:
   jedis:
-    pool:
-      password: 123123
+    password: 123123

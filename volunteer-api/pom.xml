@@ -8,12 +8,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <version>1.0-SNAPSHOT</version>
 
     <artifactId>volunteer-api</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>sys-api</module>
         <module>school-api</module>
+        <module>file-api</module>
     </modules>
 
     <properties>
@@ -33,4 +35,28 @@
             <version>8.0.0.Final</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <!-- 默认关掉单元测试，不用手动关闭了 -->
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 </project>

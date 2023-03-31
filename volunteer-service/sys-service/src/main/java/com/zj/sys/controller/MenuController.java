@@ -90,4 +90,5 @@ public class MenuController extends ControllerUtils {
         // TODO 验证当前用户的权限
         return menuService.bingingMenuToRole(roleId, menuIds).toJSON();
     }
+
 }

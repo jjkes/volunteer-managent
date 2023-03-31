@@ -29,7 +29,7 @@ import java.security.NoSuchAlgorithmException;
  * @description: TODO
  * @date 2023/3/4 22:11
  */
-
+@Component
 public class UsernamePasswordRealm extends AuthorizingRealm {
 
 

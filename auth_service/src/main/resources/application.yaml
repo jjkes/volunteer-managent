@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 9004
 spring:
   application:
     name: auth-service
@@ -9,10 +9,7 @@ eureka:
   client:
     service-url:
       -defaultZone: http://127.0.0.1:9000/eureka
-redis:
-  jedis:
-    password: 123123
-    database: 1
+
 
 
 shiro:
@@ -29,3 +26,7 @@ hayek:
     sessionTimeout: 1800000
     # rememberMe cookie有效时长，默认30天
     cookieTimeout: 2592000
+redis:
+  jedis:
+    host: www.jjjyyds.club # reids端口
+    password: 123123 # 密码

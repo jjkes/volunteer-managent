@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpCookie;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -55,20 +56,23 @@ public class CustomFilter implements GlobalFilter, Ordered {
                 httpStatus = HttpStatus.FORBIDDEN;
             } else {
 
-                TokenUser tokenUserFromToken = null;
+                String redisKey = null;
                 try {
-                    tokenUserFromToken = JwtTokenUtil.getTokenUserFromToken(token);
+                    redisKey = JwtTokenUtil.getTokenUserFromToken(token);
                 } catch (Exception e) {
                     System.err.println("解析异常" + e.getMessage());
                     flag = false;
                     httpStatus = HttpStatus.UNAUTHORIZED;
                 }
-                if (tokenUserFromToken != null) {
-                    String newToken = JwtTokenUtil.refreshToken(token);
-                    if (newToken != null) {
-                        response.getHeaders().set("Access-Control-Expose-Headers", "AuthorizationToken");
-                        response.getHeaders().set("AuthorizationToken", newToken);
-                    }
+                if (redisKey != null) {
+                    HttpHeaders headers = request.getHeaders();
+                    headers= HttpHeaders.writableHttpHeaders(headers);
+                    headers.set("sessionRedisId", redisKey);
+//                    String newToken = JwtTokenUtil.refreshToken(token);
+//                    if (newToken != null) {
+//                        response.getHeaders().set("Access-Control-Expose-Headers", "AuthorizationToken");
+//                        response.getHeaders().set("AuthorizationToken", newToken);
+//                    }
                 } else {
                     flag = false;
                     httpStatus = HttpStatus.UNAUTHORIZED;
@@ -79,6 +83,7 @@ public class CustomFilter implements GlobalFilter, Ordered {
             response.setStatusCode(httpStatus);
             return response.setComplete();
         }
+//        request.getHeaders().set("sessionId",);
         return chain.filter(exchange);
     }
 

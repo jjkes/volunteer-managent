@@ -10,7 +10,6 @@ spring:
     name: gateway-service
   cloud:
     gateway:
-
       globalcors:
         cors-configurations:
           '[/**]': # 匹配所有请求
@@ -31,3 +30,12 @@ spring:
           uri: lb://school-service
           predicates:
             - Path=/school/**
+        - id: auth
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: file
+          uri: lb://file-service
+          predicates:
+            - Path=/file/**
+            - Path=/xml/**

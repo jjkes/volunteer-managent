@@ -17,4 +17,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface SchoolService {
     @GetMapping("/school/insert")
     public String schoolInsert();
+
 }

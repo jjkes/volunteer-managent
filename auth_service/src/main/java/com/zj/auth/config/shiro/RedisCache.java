@@ -1,7 +1,8 @@
 package com.zj.auth.config.shiro;
 
-import com.zj.auth.utls.RedisUtil;
+
 import com.zj.common.utils.HashUtil;
+import com.zj.common.utils.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.shiro.cache.AbstractCacheManager;
 import org.apache.shiro.cache.Cache;

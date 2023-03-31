@@ -8,13 +8,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <version>1.0-SNAPSHOT</version>
 
     <artifactId>volunteer-service</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>sys-service</module>
         <module>school-service</module>
-        <module>xml-servcie</module>
+        <module>file-service</module>
     </modules>
 
     <properties>

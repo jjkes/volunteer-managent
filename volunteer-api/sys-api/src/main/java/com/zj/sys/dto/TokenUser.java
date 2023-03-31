@@ -2,6 +2,7 @@ package com.zj.sys.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  * @date 2022/10/16 9:43
  */
 @Data
-public class TokenUser {
+public class TokenUser implements Serializable {
     /** 用户Id */
     private String id;
     /** 用户名 */

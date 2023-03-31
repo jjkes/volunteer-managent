@@ -46,17 +46,34 @@ public class JwtTokenUtil {
                 .sign(Algorithm.HMAC384(JWT_TOKEN_PREFIX));
         return token;
     }
+    /**
+     * <h1>生成包含redisKey的token</h1>
+     * @author 赵健
+     * @date 2023/3/12 10:46
+     */
+    public static String generateTokenForStr(String redisKey){
+        Instant nowInstant = Instant.now();
+        Instant expireInstant = nowInstant.plusSeconds(expireSecond);
+        ZonedDateTime dateTime = expireInstant.atZone(ZoneId.systemDefault());
+        System.err.println(dateTime);
+        String token = JWT.create()
+                .withClaim("redisKey",redisKey)
+                .withExpiresAt(expireInstant)
+                .withIssuedAt(nowInstant)
+                .sign(Algorithm.HMAC384(JWT_TOKEN_PREFIX));
+        return token;
+    }
 
-    public static TokenUser getTokenUserFromToken(String token){
+    public static String getTokenUserFromToken(String token){
         JWTVerifier build = JWT.require(Algorithm.HMAC384(JWT_TOKEN_PREFIX)).build();
         DecodedJWT verify = build.verify(token);
-        Claim claim = verify.getClaim("tokenUser");
+        Claim claim = verify.getClaim("redisKey");
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
-        Map map = claim.as(Map.class);
-        TokenUser tokenUser = TokenUser.mapToEntity(map);
-        return tokenUser;
+        String redisKey = claim.as(String.class);
+
+        return redisKey;
     }
 
     public static String refreshToken(String token){
@@ -91,10 +108,11 @@ public class JwtTokenUtil {
 
     public static void main(String[] args) {
         TokenUser tokenUser = new TokenUser();
+        tokenUser.setUsername("dsfsdf");
         String s = generateToken(tokenUser);
         System.err.println("token="+s);
-        TokenUser tokenUserFromToken = getTokenUserFromToken(s);
-        System.err.println(tokenUserFromToken);
+//        TokenUser tokenUserFromToken = getTokenUserFromToken(s);
+//        System.err.println(tokenUserFromToken);
 
 
     }

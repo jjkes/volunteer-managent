@@ -1,6 +1,7 @@
 package com.zj.auth.service;
 
 import com.zj.common.config.Result;
+import com.zj.common.exception.MyAuthException;
 import com.zj.sys.entity.LoginUser;
 import org.springframework.http.ResponseEntity;
 
@@ -14,5 +15,5 @@ import java.util.Map;
  */
 
 public interface AuthService {
-    ResponseEntity<Result> getAuthToken(LoginUser loginUser);
+    ResponseEntity<Result> getAuthToken(LoginUser loginUser) throws MyAuthException;
 }

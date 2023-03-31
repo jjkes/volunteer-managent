@@ -1,5 +1,7 @@
 package com.zj.auth.utls;
 
+import com.zj.auth.BaseTest;
+import com.zj.common.utils.RedisUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

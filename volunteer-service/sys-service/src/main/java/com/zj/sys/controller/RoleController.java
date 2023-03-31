@@ -1,6 +1,8 @@
 package com.zj.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zj.common.exception.MyAuthException;
+import com.zj.common.interceptor.UserAuthentication;
 import com.zj.sys.config.BaseController;
 import com.zj.sys.config.ControllerUtils;
 import com.zj.sys.config.Result;
@@ -8,6 +10,7 @@ import com.zj.sys.dto.RoleDto;
 import com.zj.sys.dto.TokenUser;
 import com.zj.sys.dto.insert.Insert;
 import com.zj.sys.service.RoleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +25,11 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2023/1/13 15:29
  */
 @BaseController(value = "/sys/role/")
+@RequiredArgsConstructor
 public class RoleController extends ControllerUtils {
 
     private final RoleService roleService;
 
-    public RoleController(RoleService roleService) {
-        this.roleService = roleService;
-    }
 
     /**
      * @description: 新建一个角色
@@ -57,5 +58,11 @@ public class RoleController extends ControllerUtils {
     @GetMapping("selectRoles")
     public JSONObject selectRoles(@RequestBody RoleDto roleDto) {
         return roleService.selectRoleList(roleDto).toJSON();
+    }
+    private final UserAuthentication userAuthentication;
+    @GetMapping("getRoleId")
+    public Object getRoleId() throws MyAuthException {
+        TokenUser userInfo = userAuthentication.getUserInfo();
+        return userInfo;
     }
 }

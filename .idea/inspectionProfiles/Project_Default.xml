@@ -15,6 +15,7 @@
       <option name="customHeaders">
         <set>
           <option value="AuthorizationToken" />
+          <option value="data" />
         </set>
       </option>
     </inspection_tool>

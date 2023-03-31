@@ -10,6 +10,8 @@ public enum CommonEnum {
     TRUE("true"),
     FALSE("false"),
     TOKEN_STR("AuthorizationToken"),
+    // redis中该用户信息的key
+    REDIS_SESSION_ID("sessionRedisId"),
     ;
     private String str;
     CommonEnum(String str){

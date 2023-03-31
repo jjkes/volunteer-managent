@@ -1,0 +1,27 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://www.jjjyyds.club:3306/volunteer?useUnicode=yes&characterEncoding=utf8
+    username: zhaojian
+    password: Zj1204??
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: file-service
+server:
+  port: 8089
+eureka:
+  client:
+    service-url:
+      -defaultZone: http://127.0.0.1:9000/eureka
+
+volunteer:
+  base-file-path: D:\volunteer
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+logging:
+  level:
+    com:
+      zj:
+        sys:
+          mapper: DEBUG
