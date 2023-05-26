@@ -11,10 +11,8 @@
         <module>eureka-service</module>
         <module>gateway-service</module>
         <module>common-service</module>
-        <module>volunteer-api</module>
         <module>volunteer-service</module>
         <module>auth_service</module>
-        <module>volunteer-api/task-api</module>
         <module>common-entities</module>
     </modules>
 

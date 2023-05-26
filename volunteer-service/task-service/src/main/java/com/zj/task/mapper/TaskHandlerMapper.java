@@ -1,6 +1,6 @@
 package com.zj.task.mapper;
 
-import com.zj.task.entity.TaskHandlerEntity;
+import com.zj.entities.task.entity.TaskHandlerEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

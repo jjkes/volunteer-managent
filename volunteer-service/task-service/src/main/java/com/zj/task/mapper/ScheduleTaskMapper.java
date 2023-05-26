@@ -1,6 +1,6 @@
 package com.zj.task.mapper;
 
-import com.zj.task.entity.ScheduleTaskEntity;
+import com.zj.entities.task.entity.ScheduleTaskEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
