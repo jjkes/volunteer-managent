@@ -1,13 +1,11 @@
 package com.zj.auth.service.impl;
 
 import com.zj.auth.AuthServiceApplication;
-import com.zj.auth.BaseTest;
 import com.zj.auth.service.AuthService;
 import com.zj.common.config.Result;
 import com.zj.common.exception.MyAuthException;
-import com.zj.sys.entity.LoginUser;
-import junit.framework.TestCase;
-import lombok.RequiredArgsConstructor;
+
+import com.zj.entities.sys.entity.LoginUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

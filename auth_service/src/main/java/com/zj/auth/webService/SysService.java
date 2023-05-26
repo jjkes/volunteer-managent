@@ -1,7 +1,7 @@
 package com.zj.auth.webService;
 
 
-import com.zj.sys.entity.User;
+import com.zj.entities.sys.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;

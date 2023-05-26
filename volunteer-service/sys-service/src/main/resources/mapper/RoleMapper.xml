@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zj.sys.mapper.RoleMapper">
 
-    <resultMap id="role" type="com.zj.sys.entity.Role">
+    <resultMap id="role" type="com.zj.entities.sys.entity.Role">
         <id property="id" column="id" javaType="String" jdbcType="VARCHAR" ></id>
         <result property="roleName" column="role_name" javaType="String" jdbcType="VARCHAR"></result>
         <result property="belongId" column="belong_id" javaType="String" jdbcType="VARCHAR"></result>
         <result property="introduce" column="introduce" javaType="String" jdbcType="VARCHAR"></result>
     </resultMap>
 
-    <insert id="insertRole" parameterType="com.zj.sys.dto.RoleDto">
+    <insert id="insertRole" parameterType="com.zj.entities.sys.dto.RoleDto">
         insert into role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -42,7 +42,7 @@
     </insert>
 
 
-    <select id="selectRoleList" parameterType="com.zj.sys.dto.RoleDto" resultMap="role">
+    <select id="selectRoleList" parameterType="com.zj.entities.sys.dto.RoleDto" resultMap="role">
         select * from role
         <where>
             <if test="id != null">
@@ -61,7 +61,7 @@
     </select>
 
 
-    <select id="selectRoleById" parameterType="string" resultType="com.zj.sys.entity.Role">
+    <select id="selectRoleById" parameterType="string" resultType="com.zj.entities.sys.entity.Role">
         select * from role where id = #{id}
     </select>
 </mapper>

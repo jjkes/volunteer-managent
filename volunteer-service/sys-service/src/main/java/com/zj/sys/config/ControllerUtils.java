@@ -1,6 +1,6 @@
 package com.zj.sys.config;
 
-import com.zj.sys.dto.TokenUser;
+import com.zj.entities.sys.dto.TokenUser;
 import com.zj.sys.util.JwtTokenUtil;
 import org.springframework.util.StringUtils;
 

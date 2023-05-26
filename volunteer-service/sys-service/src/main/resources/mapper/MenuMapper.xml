@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zj.sys.mapper.MenuMapper">
-    <resultMap id="menu" type="com.zj.sys.dto.MenuDto">
+    <resultMap id="menu" type="com.zj.entities.sys.dto.MenuDto">
         <id property="id" column="id" javaType="String" jdbcType="VARCHAR"></id>
         <result property="menuName" column="menu_name" javaType="String" jdbcType="VARCHAR"></result>
         <result property="routerPath" column="router_path" javaType="String" jdbcType="VARCHAR"></result>
@@ -9,7 +9,7 @@
         <result property="introduce" column="introduce" javaType="String" jdbcType="VARCHAR"></result>
     </resultMap>
 
-    <insert id="insertMenu" parameterType="com.zj.sys.dto.MenuDto">
+    <insert id="insertMenu" parameterType="com.zj.entities.sys.dto.MenuDto">
         insert into menu
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -63,7 +63,7 @@
         order by sort
     </select>
 
-    <select id="selectMenuList" parameterType="com.zj.sys.dto.MenuDto" resultMap="menu">
+    <select id="selectMenuList" parameterType="com.zj.entities.sys.dto.MenuDto" resultMap="menu">
         select * from menu
         <where>
             <if test="id != null">

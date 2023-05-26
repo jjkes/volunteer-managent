@@ -2,10 +2,10 @@ package com.zj.sys.service.impl;
 
 import com.zj.common.constant.StateEnum;
 import com.zj.sys.config.Result;
-import com.zj.sys.dto.MenuDto;
-import com.zj.sys.dto.RoleMenu;
-import com.zj.sys.dto.TokenUser;
-import com.zj.sys.entity.Menu;
+import com.zj.entities.sys.dto.MenuDto;
+import com.zj.entities.sys.dto.RoleMenu;
+import com.zj.entities.sys.dto.TokenUser;
+import com.zj.entities.sys.entity.Menu;
 import com.zj.sys.mapper.MenuMapper;
 import com.zj.sys.service.MenuService;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,9 @@
 package com.zj.sys.service;
 
 import com.zj.sys.config.Result;
-import com.zj.sys.dto.UserDto;
-import com.zj.sys.entity.LoginUser;
-import com.zj.sys.entity.User;
+import com.zj.entities.sys.dto.UserDto;
+import com.zj.entities.sys.entity.LoginUser;
+import com.zj.entities.sys.entity.User;
 
 /**
  * @author a1204

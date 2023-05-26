@@ -1,6 +1,6 @@
 package com.zj.sys.mapper;
 
-import com.zj.sys.entity.User;
+import com.zj.entities.sys.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

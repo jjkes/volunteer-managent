@@ -1,0 +1,30 @@
+server:
+  port: 10002
+
+spring:
+  application:
+    name: task-service
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/task
+
+
+
+
+# eureka 配置
+eureka:
+  client:
+    service-url:
+      -defaultZone: http://127.0.0.1:10000/eureka
+# mybatis 扫描路径配置
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+logging:
+  level:
+    com:
+      zj:
+        sys:
+          mapper: DEBUG

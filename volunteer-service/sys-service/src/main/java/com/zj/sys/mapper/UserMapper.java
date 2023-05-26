@@ -1,8 +1,8 @@
 package com.zj.sys.mapper;
 
-import com.zj.sys.dto.UserDto;
-import com.zj.sys.entity.LoginUser;
-import com.zj.sys.entity.User;
+import com.zj.entities.sys.dto.UserDto;
+import com.zj.entities.sys.entity.LoginUser;
+import com.zj.entities.sys.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 

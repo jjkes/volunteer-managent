@@ -7,7 +7,7 @@ package com.zj.common.exception;
  * @date 2023/3/11 21:12
  */
 
-public abstract class MyException extends Exception{
+public abstract class MyException extends RuntimeException{
     static final long serialVersionUID = -3387516993124229489L;
     public MyException() {
         super("System error,please contact staff");

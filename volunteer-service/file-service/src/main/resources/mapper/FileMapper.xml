@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zj.xml.mapper.FileMapper">
-    <resultMap id="fileEntity" type="com.zj.file.entity.FileEntity">
+    <resultMap id="fileEntity" type="com.zj.entities.file.entity.FileEntity">
         <id property="id" column="id" jdbcType="CHAR" javaType="String"></id>
         <result property="fileName" column="file_name" jdbcType="VARCHAR" javaType="String"></result>
         <result property="filePath" column="file_path" jdbcType="VARCHAR" javaType="String"></result>
@@ -11,7 +11,7 @@
         <result property="isDeleted" column="id_deleted" jdbcType="TINYINT" javaType="Integer"></result>
     </resultMap>
 
-    <insert id="saveFile" parameterType="com.zj.file.entity.FileEntity" >
+    <insert id="saveFile" parameterType="com.zj.entities.file.entity.FileEntity" >
         insert into file
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -69,7 +69,7 @@
         from file
         where id=#{id} and is_deleted=0
     </select>
-    <select id="findAll" parameterType="com.zj.file.entity.FileEntity" resultType="com.zj.file.entity.FileEntity">
+    <select id="findAll" parameterType="com.zj.entities.file.entity.FileEntity" resultType="com.zj.entities.file.entity.FileEntity">
         select *
         from file
         <where>

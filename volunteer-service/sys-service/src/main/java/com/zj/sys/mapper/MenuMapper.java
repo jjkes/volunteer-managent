@@ -1,8 +1,8 @@
 package com.zj.sys.mapper;
 
-import com.zj.sys.dto.MenuDto;
-import com.zj.sys.dto.RoleMenu;
-import com.zj.sys.entity.Menu;
+import com.zj.entities.sys.dto.MenuDto;
+import com.zj.entities.sys.dto.RoleMenu;
+import com.zj.entities.sys.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -5,7 +5,7 @@
 <!--    <parameterMap id="userParam" type="com.zj.sys.entity.User">-->
 <!--        <parameter property="id" resultMap="userResult" javaType="String" jdbcType="varchar" ></parameter>-->
 <!--    </parameterMap>-->
-    <resultMap id="userResult" type="com.zj.sys.entity.User">
+    <resultMap id="userResult" type="com.zj.entities.sys.entity.User">
         <id property="id" column="id" jdbcType="VARCHAR" javaType="String"></id>
         <result property="name" column="name" jdbcType="VARCHAR" javaType="String"></result>
         <result property="alias" column="alias" jdbcType="VARCHAR" javaType="String"></result>
@@ -25,7 +25,7 @@
         update_password_time,
         password_error_times
     </sql>
-    <insert id="insertUser" parameterType="com.zj.sys.entity.User">
+    <insert id="insertUser" parameterType="com.zj.entities.sys.entity.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -93,7 +93,7 @@
         </trim>
     </insert>
 
-    <update id="updateUser" parameterType="com.zj.sys.dto.UserDto">
+    <update id="updateUser" parameterType="com.zj.entities.sys.dto.UserDto">
         update user
         <set>
             <if test="id != null">
@@ -137,7 +137,7 @@
     </select>
 
 
-    <select id="getLoginUser" parameterType="com.zj.sys.entity.LoginUser" resultMap="userResult">
+    <select id="getLoginUser" parameterType="com.zj.entities.sys.entity.LoginUser" resultMap="userResult">
         select
             <include refid="column_user"></include>
         from user

@@ -8,25 +8,16 @@ import com.zj.common.constant.CommonEnum;
 import com.zj.common.constant.StateEnum;
 import com.zj.common.exception.MyAuthException;
 import com.zj.common.utils.JwtTokenUtil;
-import com.zj.sys.dto.TokenUser;
-import com.zj.sys.entity.LoginUser;
-import com.zj.sys.entity.User;
+
+import com.zj.entities.sys.dto.TokenUser;
+import com.zj.entities.sys.entity.LoginUser;
+import com.zj.entities.sys.entity.User;
 import lombok.RequiredArgsConstructor;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.MultiValueMap;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author 赵健

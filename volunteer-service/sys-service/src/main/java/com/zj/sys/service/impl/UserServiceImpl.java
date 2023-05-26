@@ -2,10 +2,10 @@ package com.zj.sys.service.impl;
 
 import com.zj.common.constant.StateEnum;
 import com.zj.sys.config.Result;
-import com.zj.sys.dto.TokenUser;
-import com.zj.sys.dto.UserDto;
-import com.zj.sys.entity.LoginUser;
-import com.zj.sys.entity.User;
+import com.zj.entities.sys.dto.TokenUser;
+import com.zj.entities.sys.dto.UserDto;
+import com.zj.entities.sys.entity.LoginUser;
+import com.zj.entities.sys.entity.User;
 import com.zj.sys.mapper.UserMapper;
 import com.zj.sys.service.UserService;
 import com.zj.sys.util.JwtTokenUtil;

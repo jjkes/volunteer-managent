@@ -3,8 +3,8 @@ package com.zj.auth.service.impl;
 import com.zj.auth.service.RedisService;
 
 import com.zj.common.utils.RedisUtil;
-import com.zj.sys.dto.TokenUser;
-import com.zj.sys.entity.User;
+import com.zj.entities.sys.dto.TokenUser;
+import com.zj.entities.sys.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

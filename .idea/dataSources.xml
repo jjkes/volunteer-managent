@@ -19,5 +19,12 @@ C:/Users/a1204/Desktop/volunteer/volunteer_management/volunteer-service/school-s
       <jdbc-url>jdbc:mysql://www.jjjyyds.club:3306/volunteer?useUnicode=true&amp;characterEncoding=utf8</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="d40f2213-825c-4c61-b57e-4ae348e51c3c">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -3,17 +3,12 @@ package com.zj.common.interceptor;
 import com.zj.common.constant.CommonEnum;
 import com.zj.common.exception.MyAuthException;
 import com.zj.common.utils.RedisUtil;
-import com.zj.sys.dto.TokenUser;
-import com.zj.sys.entity.User;
+
+import com.zj.entities.sys.dto.TokenUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static org.springframework.web.context.request.RequestAttributes.SCOPE_SESSION;
 
 /**
  * @author 赵健

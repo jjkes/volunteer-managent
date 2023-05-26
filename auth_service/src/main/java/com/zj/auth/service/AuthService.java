@@ -2,10 +2,9 @@ package com.zj.auth.service;
 
 import com.zj.common.config.Result;
 import com.zj.common.exception.MyAuthException;
-import com.zj.sys.entity.LoginUser;
-import org.springframework.http.ResponseEntity;
 
-import java.util.Map;
+import com.zj.entities.sys.entity.LoginUser;
+import org.springframework.http.ResponseEntity;
 
 /**
  * @author 赵健

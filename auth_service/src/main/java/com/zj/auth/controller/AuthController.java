@@ -5,19 +5,16 @@ import com.zj.common.config.Result;
 import com.zj.common.constant.StateEnum;
 import com.zj.common.exception.MyAuthException;
 import com.zj.common.interceptor.UserAuthentication;
-import com.zj.sys.dto.TokenUser;
-import com.zj.sys.entity.LoginUser;
+
+import com.zj.entities.sys.dto.TokenUser;
+import com.zj.entities.sys.entity.LoginUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 /**
  * @author 赵健

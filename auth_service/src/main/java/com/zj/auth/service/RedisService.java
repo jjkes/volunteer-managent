@@ -1,6 +1,6 @@
 package com.zj.auth.service;
 
-import com.zj.sys.dto.TokenUser;
+import com.zj.entities.sys.dto.TokenUser;
 
 /**
  * @author 赵健
