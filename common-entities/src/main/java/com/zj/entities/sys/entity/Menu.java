@@ -1,6 +1,7 @@
 package com.zj.entities.sys.entity;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 /**
  * @author 赵健
@@ -9,6 +10,7 @@ import lombok.Data;
  * @date 2023/1/12 17:30
  */
 @Data
+@Alias("Menu")
 public class Menu {
     /** 菜单id */
     private String id;

@@ -11,4 +11,13 @@
     <select id="getAllTask" resultMap="task">
         select * from schedule_task;
     </select>
+
+
+    <select id="getTaskById" parameterType="String" resultMap="task">
+        select * from schedule_task where id = #{id}
+    </select>
+    
+    <insert id="addTask" parameterType="ScheduleTaskEntity">
+
+    </insert>
 </mapper>

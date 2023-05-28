@@ -8,17 +8,6 @@
       <jdbc-url>jdbc:mysql://www.jjjyyds.club:3306/volunteer</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="e2a142b5-790c-4b31-a864-042c9041fdfd">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-C:/Users/a1204/Desktop/volunteer/volunteer_management/volunteer-service/school-service/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://www.jjjyyds.club:3306/volunteer?useUnicode=true&amp;characterEncoding=utf8</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="@localhost" uuid="d40f2213-825c-4c61-b57e-4ae348e51c3c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>

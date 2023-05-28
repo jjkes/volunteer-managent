@@ -1,6 +1,7 @@
 package com.zj.entities.sys.entity;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 /**
  * @author 赵健
@@ -9,6 +10,7 @@ import lombok.Data;
  * @date 2023/1/13 11:27
  */
 @Data
+@Alias("Role")
 public class Role {
 
     private String id;

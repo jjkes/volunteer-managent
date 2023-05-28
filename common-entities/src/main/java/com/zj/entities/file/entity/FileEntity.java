@@ -1,6 +1,7 @@
 package com.zj.entities.file.entity;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
  * @date 2023/3/11 19:59
  */
 @Data
+@Alias("FileEntity")
 public class FileEntity {
     /**
     * 文件的id，uuid

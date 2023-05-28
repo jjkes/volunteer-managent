@@ -1,6 +1,7 @@
 package com.zj.entities.sys.entity;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
 * @version 1.0
 */
 @Data
+@Alias("User")
 public class User {
 
     private String id;
