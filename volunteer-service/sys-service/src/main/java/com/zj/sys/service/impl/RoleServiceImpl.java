@@ -2,8 +2,8 @@ package com.zj.sys.service.impl;
 
 import com.zj.common.constant.StateEnum;
 import com.zj.sys.config.Result;
-import com.zj.sys.dto.RoleDto;
-import com.zj.sys.entity.Role;
+import com.zj.entities.sys.dto.RoleDto;
+import com.zj.entities.sys.entity.Role;
 import com.zj.sys.mapper.RoleMapper;
 import com.zj.sys.service.RoleService;
 import org.springframework.stereotype.Service;

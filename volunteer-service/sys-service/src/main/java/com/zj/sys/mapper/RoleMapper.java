@@ -1,7 +1,7 @@
 package com.zj.sys.mapper;
 
-import com.zj.sys.dto.RoleDto;
-import com.zj.sys.entity.Role;
+import com.zj.entities.sys.dto.RoleDto;
+import com.zj.entities.sys.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

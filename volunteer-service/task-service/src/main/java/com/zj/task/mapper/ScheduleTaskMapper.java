@@ -17,4 +17,8 @@ public interface ScheduleTaskMapper {
     List<ScheduleTaskEntity> getAllTask();
 
     ScheduleTaskMapper getTaskById(String id);
+
+    int getTaskCount(ScheduleTaskEntity entity);
+
+    List<ScheduleTaskEntity> getTaskListForLimit(ScheduleTaskEntity entity,int page, int pageSize);
 }

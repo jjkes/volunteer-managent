@@ -1,6 +1,5 @@
 package com.zj.common.globalFilter;
 
-import com.zj.sys.dto.TokenUser;
 import com.zj.utils.JwtTokenUtil;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -15,12 +14,13 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
+
 /**
-* @discription 统一拦截器
-* @author 赵健
-* @date 2023/2/2 10:22
-* @version 1.0
-*/
+ * @author 赵健
+ * @version 1.0
+ * @discription 统一拦截器
+ * @date 2023/2/2 10:22
+ */
 @Component
 public class CustomFilter implements GlobalFilter, Ordered {
     private static final String TOKEN_PREFIX = "AuthorizationToken";
@@ -66,7 +66,7 @@ public class CustomFilter implements GlobalFilter, Ordered {
                 }
                 if (redisKey != null) {
                     HttpHeaders headers = request.getHeaders();
-                    headers= HttpHeaders.writableHttpHeaders(headers);
+                    headers = HttpHeaders.writableHttpHeaders(headers);
                     headers.set("sessionRedisId", redisKey);
 //                    String newToken = JwtTokenUtil.refreshToken(token);
 //                    if (newToken != null) {

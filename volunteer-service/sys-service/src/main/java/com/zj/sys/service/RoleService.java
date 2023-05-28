@@ -1,8 +1,8 @@
 package com.zj.sys.service;
 
 import com.zj.sys.config.Result;
-import com.zj.sys.dto.RoleDto;
-import com.zj.sys.entity.Role;
+import com.zj.entities.sys.dto.RoleDto;
+import com.zj.entities.sys.entity.Role;
 
 import java.util.List;
 

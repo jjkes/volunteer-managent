@@ -8,6 +8,24 @@
         <result property="type" column="type" jdbcType="TINYINT" javaType="Integer" />
         <result property="taskId" column="task_id" javaType="Integer" jdbcType="INTEGER"/>
     </resultMap>
+
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                name like concat('%',#{name},'%')
+            </if>
+            <if test="taskId != null">
+                task_id = #{taskId}
+            </if>
+            <if test="type != null" >
+                type = #{type}
+            </if>
+        </where>
+    </sql>
     <select id="getAllTask" resultMap="task">
         select * from schedule_task;
     </select>
@@ -18,6 +36,53 @@
     </select>
     
     <insert id="addTask" parameterType="ScheduleTaskEntity">
-
+        insert into schedule_task
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="taskId != null">
+                task_id,
+            </if>
+            <if test="param != null">
+                param
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="type != null">
+                #{type},
+            </if>
+            <if test="taskId != null">
+                #{taskId},
+            </if>
+            <if test="param != null">
+                #{param}
+            </if>
+        </trim>
     </insert>
+
+
+    <select id="getTaskCount" parameterType="ScheduleTaskEntity" resultType="integer">
+        select COUNT(*)
+        from schedule_task
+        <include refid="where" />
+    </select>
+    <select id="getTaskListForLimit" parameterType="ScheduleTaskEntity" resultMap="task" >
+        select *
+        from schedule_task
+        <include refid="where" />
+        limit #{page},#{pageSize}
+    </select>
 </mapper>
