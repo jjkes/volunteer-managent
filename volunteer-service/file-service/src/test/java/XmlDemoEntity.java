@@ -1,4 +1,4 @@
-import com.zj.file.annotation.XmlValue;
+import com.zj.entities.file.annotation.XmlValue;
 import lombok.Data;
 
 /**

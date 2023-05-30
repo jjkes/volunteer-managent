@@ -1,6 +1,6 @@
 package com.zj.file.mapper;
 
-import com.zj.file.entity.FileEntity;
+import com.zj.entities.file.entity.FileEntity;
 
 import org.apache.ibatis.annotations.Mapper;
 

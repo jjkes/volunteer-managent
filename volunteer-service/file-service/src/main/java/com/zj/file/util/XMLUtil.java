@@ -1,6 +1,6 @@
 package com.zj.file.util;
 
-import com.zj.file.annotation.XmlValue;
+import com.zj.entities.file.annotation.XmlValue;
 import org.dom4j.Element;
 
 import java.beans.PropertyDescriptor;

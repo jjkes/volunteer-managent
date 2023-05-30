@@ -6,7 +6,7 @@ import com.zj.common.config.SysProperties;
 import com.zj.common.constant.StateEnum;
 import com.zj.common.exception.MyException;
 import com.zj.common.utils.FileUtil;
-import com.zj.file.entity.FileEntity;
+import com.zj.entities.file.entity.FileEntity;
 import com.zj.file.mapper.FileMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.StringUtils;
