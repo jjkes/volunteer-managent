@@ -11,10 +11,7 @@
 
     <artifactId>gateway-service</artifactId>
 
-    <properties>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

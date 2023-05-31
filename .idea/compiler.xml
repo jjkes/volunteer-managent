@@ -49,8 +49,8 @@
       <module name="task-service" options="-parameters" />
       <module name="volunteer-api" options="-parameters" />
       <module name="volunteer-common" options="-parameters" />
-      <module name="volunteer-service" options="" />
-      <module name="volunteer_management" options="" />
+      <module name="volunteer-service" options="-parameters" />
+      <module name="volunteer_management" options="-parameters" />
     </option>
   </component>
 </project>
