@@ -25,14 +25,9 @@ hs_err_pid*
 replay_pid*
 
 
-/auth_service/target
-/common-service/target
-/common-entities/target
-/eureka-service/target
-/gateway-service/target
-/volunteer-service/file-service/target
-/volunteer-service/task-service/target
-/volunteer-service/sys-service/target
-/volunteer-service/school-service/target
-
+**/target
+.idea
+.run
+*.iml
+*.project
 
