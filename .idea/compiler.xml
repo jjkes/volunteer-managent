@@ -12,7 +12,6 @@
         <module name="common-entities" />
         <module name="task-api" />
         <module name="sys-api" />
-        <module name="school-service" />
         <module name="file-service" />
         <module name="eureka-service" />
         <module name="volunteer-common" />
@@ -26,6 +25,7 @@
     <bytecodeTargetLevel>
       <module name="common-config" target="1.8" />
       <module name="redis-service" target="1.8" />
+      <module name="school-service" target="1.8" />
       <module name="socket-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>

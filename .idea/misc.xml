@@ -30,6 +30,7 @@
         <option value="$PROJECT_DIR$/redis-service/pom.xml" />
         <option value="$PROJECT_DIR$/socket-service/pom.xml" />
         <option value="$PROJECT_DIR$/sys-service/pom.xml" />
+        <option value="$PROJECT_DIR$/volunteer-service/school-service/pom.xml" />
       </set>
     </option>
   </component>
