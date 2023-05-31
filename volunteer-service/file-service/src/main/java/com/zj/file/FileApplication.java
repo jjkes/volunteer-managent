@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(value = {"com.zj.common", "com.zj.file"})
 @EnableEurekaClient
-public class XmlApplication {
+public class FileApplication {
     public static void main(String[] args) {
-        SpringApplication.run(XmlApplication.class, args);
+        SpringApplication.run(FileApplication.class, args);
     }
 }

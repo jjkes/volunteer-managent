@@ -1,5 +1,5 @@
 import com.zj.common.config.SysProperties;
-import com.zj.file.XmlApplication;
+import com.zj.file.FileApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @date 2023/3/10 15:10
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {XmlApplication.class})
+@SpringBootTest(classes = {FileApplication.class})
 public class BaseTest {
     @Autowired
     private SysProperties sysProperties;
