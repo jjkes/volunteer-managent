@@ -12,7 +12,7 @@ server:
 eureka:
   client:
     service-url:
-      -defaultZone: http://127.0.0.1:9000/eureka
+      -defaultZone: http://127.0.0.1:10000/eureka
 
 volunteer:
   base-file-path: D:\volunteer

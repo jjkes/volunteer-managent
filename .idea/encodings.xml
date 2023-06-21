@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/auth_service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/auth_service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common-config/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common-entities/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway-service/src/main/java" charset="UTF-8" />
@@ -26,6 +21,11 @@
     <file url="file://$PROJECT_DIR$/volunteer-api/sys-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/volunteer-api/sys-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/volunteer-api/task-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/volunteer-service/auth_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/volunteer-service/auth_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/volunteer-service/common-entities/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/volunteer-service/common-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/volunteer-service/common-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/volunteer-service/file-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/volunteer-service/file-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/volunteer-service/school-service/src/main/java" charset="UTF-8" />

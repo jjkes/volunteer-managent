@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2022/9/25 16:14
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.zj.common","com.zj.sys"})
+@ComponentScan(basePackages = {"com.zj"})
 @EnableEurekaClient
 @EnableHystrix
 @EnableFeignClients
