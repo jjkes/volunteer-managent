@@ -1,5 +1,7 @@
 package com.zj.task.service;
 
+import com.zj.entities.task.entity.ScheduleTaskEntity;
+
 /**
  * @author 赵健
  * @version 1.0
@@ -8,4 +10,10 @@ package com.zj.task.service;
  */
 
 public interface TaskService {
+    /**
+     * rabbitMQ 接受消息并开启定时任务
+     * @author 赵健
+     * @date 2023/6/25 13:34
+     */
+    void RabbitMQTask(ScheduleTaskEntity scheduleTask);
 }

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: config-single-server  # 应用名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/zj_git_work/config.git #配置文件所在仓库
+          username: zj_git_work
+          password: jjkkllaiil1332.!
+          default-label: main #配置文件分支
+          search-paths: config  #配置文件所在根目录
+
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/task
+server:
+  port: 8082
+  # eureka 配置
+
+eureka:
+  client:
+    service-url:
+      -defaultZone: http://127.0.0.1:10000/eureka

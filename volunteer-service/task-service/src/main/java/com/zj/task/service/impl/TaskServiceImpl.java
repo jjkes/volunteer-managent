@@ -8,6 +8,7 @@ import com.zj.entities.task.entity.ScheduleTaskEntity;
 import com.zj.entities.task.entity.TaskHandlerEntity;
 import com.zj.task.mapper.ScheduleTaskMapper;
 import com.zj.task.mapper.TaskHandlerMapper;
+import com.zj.task.service.ScheduleService;
 import com.zj.task.service.TaskService;
 import com.zj.task.taskHandler.Task;
 import org.slf4j.Logger;
@@ -72,7 +73,7 @@ public class TaskServiceImpl implements TaskService {
       logger.info("初始化定时任务开始！");
         for (ScheduleTaskEntity task : taskEntityList) {
             boolean isStart = addTask(task);
-            if (!isStart) {
+            if (isStart) {
                 taskSuccessCount++;
                 logger.info("定时任务《{}》启动成功！任务id：{}",task.getName(),task.getId());
             }else{
@@ -231,9 +232,24 @@ public class TaskServiceImpl implements TaskService {
     }
 
 
-
-
-
-
-
+    /**
+     * rabbitMQ 接受消息并开启定时任务
+     *
+     * @param scheduleService
+     * @author 赵健
+     * @date 2023/6/25 13:34
+     */
+    @Override
+    public void RabbitMQTask(ScheduleTaskEntity scheduleTask) {
+        if (scheduleTask.getType() != null && scheduleTask.getTaskId() != null && scheduleTask.getExecuteTime() != null && scheduleTask.getParam() != null) {
+            int i = scheduleTaskMapper.addTask(scheduleTask);
+            if(i>0){
+                if (this.addTask(scheduleTask)) {
+                    logger.info("定时任务启动成功！");
+                }else{
+                    logger.info("定时任务启动失败！");
+                }
+            }
+        }
+    }
 }

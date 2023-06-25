@@ -10,10 +10,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
-eureka:
-  client:
-    service-url:
-      -defaultZone: http://127.0.0.1:10000/eureka
+
 
 
 
@@ -31,8 +28,3 @@ hayek:
     sessionTimeout: 1800000
     # rememberMe cookie有效时长，默认30天
     cookieTimeout: 2592000
-redis:
-  jedis:
-    host: www.jjjyyds.club # reids端口
-    password: 123123 # 密码
-    port: 6379

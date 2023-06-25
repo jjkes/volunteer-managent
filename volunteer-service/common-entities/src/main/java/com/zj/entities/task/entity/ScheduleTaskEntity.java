@@ -3,6 +3,8 @@ package com.zj.entities.task.entity;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 /**
  * @author 赵健
  * @version 1.0
@@ -11,7 +13,7 @@ import org.apache.ibatis.type.Alias;
  */
 @Alias("ScheduleTaskEntity")
 @Data
-public class ScheduleTaskEntity {
+public class ScheduleTaskEntity implements Serializable {
     private String id;
     private String name;
     private Integer type;

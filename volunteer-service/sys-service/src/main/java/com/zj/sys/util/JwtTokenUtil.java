@@ -34,13 +34,13 @@ public class JwtTokenUtil {
      * @date 2022/10/16 10:56
      */
 
-    public static String generateToken(TokenUser tokenUser){
+    public static String generateToken(String uuid){
         Instant nowInstant = Instant.now();
         Instant expireInstant = nowInstant.plusSeconds(expireSecond);
         ZonedDateTime dateTime = expireInstant.atZone(ZoneId.systemDefault());
         System.err.println(dateTime);
         String token = JWT.create()
-                .withClaim("tokenUser", tokenUser.toMap())
+                .withClaim("redisKey", uuid)
                 .withExpiresAt(expireInstant)
                 .withIssuedAt(nowInstant)
                 .sign(Algorithm.HMAC384(JWT_TOKEN_PREFIX));
@@ -50,7 +50,7 @@ public class JwtTokenUtil {
     public static TokenUser getTokenUserFromToken(String token){
         JWTVerifier build = JWT.require(Algorithm.HMAC384(JWT_TOKEN_PREFIX)).build();
         DecodedJWT verify = build.verify(token);
-        Claim claim = verify.getClaim("tokenUser");
+        Claim claim = verify.getClaim("redisKey");
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
@@ -69,18 +69,18 @@ public class JwtTokenUtil {
             return null;
         }
         DecodedJWT verify = build.verify(token);
-        Claim claim = verify.getClaim("tokenUser");
+        Claim claim = verify.getClaim("redisKey");
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
-        Map map = claim.as(Map.class);
-        TokenUser tokenUser = TokenUser.mapToEntity(map);
+        String uuid = claim.as(String.class);
+
         Instant expires = verify.getExpiresAtAsInstant();
         // 计算还有多长时间到期
         Duration duration = Duration.between(Instant.now(), expires);
         long seconds = duration.toMillis() / 1000;
         if(seconds<=(expireSecond/2)){
-            finalToken = generateToken(tokenUser);
+            finalToken = generateToken(uuid);
         }else{
             finalToken = null;
         }
@@ -91,11 +91,11 @@ public class JwtTokenUtil {
 
     public static void main(String[] args) {
         TokenUser tokenUser = new TokenUser();
-        tokenUser.setUsername("dsfsdf");
-        String s = generateToken(tokenUser);
-        System.err.println("token="+s);
-        TokenUser tokenUserFromToken = getTokenUserFromToken(s);
-        System.err.println(tokenUserFromToken);
+//        tokenUser.setUsername("dsfsdf");
+//        String s = generateToken(tokenUser);
+//        System.err.println("token="+s);
+//        TokenUser tokenUserFromToken = getTokenUserFromToken(s);
+//        System.err.println(tokenUserFromToken);
 
 
     }

@@ -13,16 +13,16 @@
     <sql id="where">
         <where>
             <if test="id != null">
-                id = #{id}
+                and id = #{id}
             </if>
             <if test="name != null">
-                name like concat('%',#{name},'%')
+                and name like concat('%',#{name},'%')
             </if>
             <if test="taskId != null">
-                task_id = #{taskId}
+                and task_id = #{taskId}
             </if>
             <if test="type != null" >
-                type = #{type}
+                and type = #{type}
             </if>
         </where>
     </sql>
@@ -50,6 +50,9 @@
             <if test="taskId != null">
                 task_id,
             </if>
+            <if test="executeTime != null">
+                execute_time,
+            </if>
             <if test="param != null">
                 param
             </if>
@@ -67,6 +70,9 @@
             <if test="taskId != null">
                 #{taskId},
             </if>
+            <if test="executeTime != null">
+                #{executeTime},
+            </if>
             <if test="param != null">
                 #{param}
             </if>
@@ -79,7 +85,7 @@
         from schedule_task
         <include refid="where" />
     </select>
-    <select id="getTaskListForLimit" parameterType="com.zj.entities.task.entity.ScheduleTaskEntity" resultMap="task" >
+    <select id="getTaskListForLimit" resultMap="task" >
         select *
         from schedule_task
         <include refid="where" />

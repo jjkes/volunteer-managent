@@ -1,9 +1,14 @@
 server:
   port: 10002
-
 spring:
   application:
     name: task-service
+  rabbitmq:
+    addresses: www.jjjyyds.club
+    port: 5673
+    username: guest
+    password: guest
+    virtual-host: /
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,11 +19,12 @@ spring:
 
 
 
-# eureka 配置
-eureka:
-  client:
-    service-url:
-      -defaultZone: http://127.0.0.1:10000/eureka
+
+## eureka 配置
+#eureka:
+#  client:
+#    service-url:
+#      -defaultZone: http://127.0.0.1:10000/eureka
 # mybatis 扫描路径配置
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml

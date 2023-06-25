@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="auth_service" />
         <module name="common-service" />
+        <module name="config-service" />
         <module name="common-entities" />
         <module name="task-api" />
         <module name="sys-api" />
@@ -35,6 +36,7 @@
       <module name="common-config" options="-parameters" />
       <module name="common-entities" options="-parameters" />
       <module name="common-service" options="-parameters" />
+      <module name="config-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
       <module name="file-api" options="-parameters" />
       <module name="file-service" options="-parameters" />

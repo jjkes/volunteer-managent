@@ -39,3 +39,7 @@ spring:
           predicates:
             - Path=/file/**
             - Path=/xml/**
+        - id: task
+          uri: lb://task-service
+          predicates:
+            - Path=/task/**

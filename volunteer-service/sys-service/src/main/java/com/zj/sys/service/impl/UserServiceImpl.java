@@ -1,6 +1,8 @@
 package com.zj.sys.service.impl;
 
 import com.zj.common.constant.StateEnum;
+import com.zj.common.exception.MyCommonException;
+import com.zj.common.utils.RedisUtil;
 import com.zj.sys.config.Result;
 import com.zj.entities.sys.dto.TokenUser;
 import com.zj.entities.sys.dto.UserDto;
@@ -11,6 +13,8 @@ import com.zj.sys.service.UserService;
 import com.zj.sys.util.JwtTokenUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 /**
  * @author a1204
  * @version 1.0
@@ -19,9 +23,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
+    private final RedisUtil redisUtil;
     private final UserMapper userMapper;
 
-    public UserServiceImpl(UserMapper userMapper) {
+    public UserServiceImpl(RedisUtil redisUtil, UserMapper userMapper) {
+        this.redisUtil = redisUtil;
         this.userMapper = userMapper;
     }
 
@@ -42,8 +49,16 @@ public class UserServiceImpl implements UserService {
             tokenUser.setRoleId(user.getRoleId());
             tokenUser.setUsername(user.getName());
             tokenUser.setUnitId(user.getSchoolId());
-            String token = JwtTokenUtil.generateToken(tokenUser);
-            result.setData(token);
+            String uuid = UUID.randomUUID().toString();
+            String s = redisUtil.setObject(uuid, tokenUser);
+            if(s != null){
+                String token = JwtTokenUtil.generateToken(uuid);
+                result.setData(token);
+            }else {
+                throw new MyCommonException("redis出错！！！");
+            }
+
+
             result.setResultEnum(StateEnum.SUCCESS);
         } else {
             result.setResultEnum(StateEnum.LOGIN_FAILED);
