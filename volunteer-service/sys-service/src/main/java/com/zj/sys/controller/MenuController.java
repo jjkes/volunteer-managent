@@ -36,8 +36,8 @@ public class MenuController extends ControllerUtils {
 
     /**
      * @description: 新建一个菜单
-     * @return: com.alibaba.fastjson.JSONObject
-     * @param: [menu]
+     * @return com.alibaba.fastjson.JSONObject
+     * @param menu menu
      * @author 赵健
      * @date 2023/1/13 20:20
      */
