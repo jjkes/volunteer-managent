@@ -1,5 +1,7 @@
 package com.zj.task.service.impl;
 
+import com.zj.common.config.Result;
+import com.zj.common.constant.StateEnum;
 import com.zj.common.exception.MyCommonException;
 import com.zj.common.utils.DateUtil;
 import com.zj.common.verify.VerifyStr;
@@ -126,6 +128,9 @@ public class TaskServiceImpl implements TaskService {
     private boolean pauseTask(ScheduleTaskEntity scheduleTask){
         String key = generateTaskName(scheduleTask.getId());
         ScheduledFuture<?> scheduledFuture = scheduledFutureMap.get(key);
+        if(scheduledFuture == null){
+            return true;
+        }
         if (scheduledFuture.isDone()) {
             boolean isCancel = scheduledFuture.cancel(false);
             if (isCancel) {
@@ -235,7 +240,7 @@ public class TaskServiceImpl implements TaskService {
     /**
      * rabbitMQ 接受消息并开启定时任务
      *
-     * @param scheduleService
+     * @param scheduleTask scheduleTask
      * @author 赵健
      * @date 2023/6/25 13:34
      */
@@ -251,5 +256,28 @@ public class TaskServiceImpl implements TaskService {
                 }
             }
         }
+    }
+
+    /**
+     * 暂停一个定时任务
+     *
+     * @param id 定时任务id
+     * @author 赵健
+     * @date 2023/6/27 15:22
+     */
+    @Override
+    public Result<?> pauseTask(String id) {
+        Result<?> result = new Result<>();
+        ScheduleTaskEntity scheduleTask = scheduleTaskMapper.getTaskById(id);
+        if(scheduleTask != null){
+            if (this.pauseTask(scheduleTask)) {
+                result.setResultEnum(StateEnum.SUCCESS);
+            }else{
+                result.setResultEnum(StateEnum.FAILED);
+            }
+        }else{
+            result.setResultEnum(StateEnum.FAILED);
+        }
+        return result;
     }
 }

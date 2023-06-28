@@ -1,6 +1,8 @@
 package com.zj.common.globalFilter;
 
-import com.zj.utils.JwtTokenUtil;
+import com.zj.webService.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -23,6 +25,8 @@ import java.net.URI;
  */
 @Component
 public class CustomFilter implements GlobalFilter, Ordered {
+    @Autowired
+    private AuthService authService;
     private static final String TOKEN_PREFIX = "AuthorizationToken";
 
     private static final String[] passList = new String[]{"getVerifyImg", "login"};
@@ -34,9 +38,9 @@ public class CustomFilter implements GlobalFilter, Ordered {
         Boolean flag = true;
         HttpStatus httpStatus = null;
         URI uri = request.getURI();
-        if (uri.getPath().contains(passList[0])) {
-            return chain.filter(exchange);
-        }
+//        if (uri.getPath().contains(passList[0])) {
+//            return chain.filter(exchange);
+//        }
         if (!uri.getPath().contains("login")) {
             // header中是否存在token
             String token = request.getHeaders().getFirst(TOKEN_PREFIX);
@@ -58,7 +62,8 @@ public class CustomFilter implements GlobalFilter, Ordered {
 
                 String redisKey = null;
                 try {
-                    redisKey = JwtTokenUtil.getTokenUserFromToken(token);
+                    redisKey = authService.getRouterKeyFromToken(token);
+                    System.err.println("redisKey = " + redisKey);
                 } catch (Exception e) {
                     System.err.println("解析异常" + e.getMessage());
                     flag = false;
@@ -68,11 +73,11 @@ public class CustomFilter implements GlobalFilter, Ordered {
                     HttpHeaders headers = request.getHeaders();
                     headers = HttpHeaders.writableHttpHeaders(headers);
                     headers.set("sessionRedisId", redisKey);
-//                    String newToken = JwtTokenUtil.refreshToken(token);
-//                    if (newToken != null) {
-//                        response.getHeaders().set("Access-Control-Expose-Headers", "AuthorizationToken");
-//                        response.getHeaders().set("AuthorizationToken", newToken);
-//                    }
+                    String newToken = authService.refreshTokenByToken(token);
+                    if (newToken != null) {
+                        response.getHeaders().set("Access-Control-Expose-Headers", "AuthorizationToken");
+                        response.getHeaders().set("AuthorizationToken", newToken);
+                    }
                 } else {
                     flag = false;
                     httpStatus = HttpStatus.UNAUTHORIZED;

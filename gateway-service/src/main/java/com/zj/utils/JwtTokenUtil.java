@@ -8,12 +8,10 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.zj.entity.TokenUser;
 
-
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Map;
 
 /**
 * @discription TODO
@@ -72,9 +70,7 @@ public class JwtTokenUtil {
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
-        String redisKey = claim.as(String.class);
-
-        return redisKey;
+        return claim.toString();
     }
 
     public static String refreshToken(String token){
@@ -87,18 +83,17 @@ public class JwtTokenUtil {
             return null;
         }
         DecodedJWT verify = build.verify(token);
-        Claim claim = verify.getClaim("tokenUser");
+        Claim claim = verify.getClaim("redisKey");
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
-        Map map = claim.as(Map.class);
-        TokenUser tokenUser = TokenUser.mapToEntity(map);
+        String redisKey = claim.toString();
         Instant expires = verify.getExpiresAtAsInstant();
         // 计算还有多长时间到期
         Duration duration = Duration.between(Instant.now(), expires);
         long seconds = duration.toMillis() / 1000;
         if(seconds<=(expireSecond/2)){
-            finalToken = generateToken(tokenUser);
+            finalToken = generateTokenForStr(redisKey);
         }else{
             finalToken = null;
         }

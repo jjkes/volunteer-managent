@@ -20,10 +20,10 @@ import org.springframework.stereotype.Component;
 public class RabbitMQConfig {
 
     public static final String EXCHANGE ="volunteer.task";
-    public static final String ROUTINGKEY="volunteer.#.task.#";
+    public static final String ROUTINGKEY="volunteer.task";
     @Bean(EXCHANGE)
     public Exchange InitExchange(){
-        return ExchangeBuilder.topicExchange(EXCHANGE).durable(true).build();
+        return ExchangeBuilder.directExchange(EXCHANGE).durable(true).build();
     }
 
     /**

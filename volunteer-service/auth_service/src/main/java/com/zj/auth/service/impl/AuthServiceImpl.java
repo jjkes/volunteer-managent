@@ -7,8 +7,8 @@ import com.zj.common.config.Result;
 import com.zj.common.constant.CommonEnum;
 import com.zj.common.constant.StateEnum;
 import com.zj.common.exception.MyAuthException;
-import com.zj.common.utils.JwtTokenUtil;
 
+import com.zj.common.utils.JwtTokenUtil;
 import com.zj.entities.sys.dto.TokenUser;
 import com.zj.entities.sys.entity.LoginUser;
 import com.zj.entities.sys.entity.User;

@@ -2,7 +2,7 @@ package com.zj.sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zj.common.exception.MyAuthException;
-import com.zj.common.interceptor.UserAuthentication;
+import com.zj.common.interceptor.UserAuthInterceptor;
 import com.zj.sys.config.BaseController;
 import com.zj.sys.config.ControllerUtils;
 import com.zj.sys.config.Result;
@@ -59,10 +59,10 @@ public class RoleController extends ControllerUtils {
     public JSONObject selectRoles(@RequestBody RoleDto roleDto) {
         return roleService.selectRoleList(roleDto).toJSON();
     }
-    private final UserAuthentication userAuthentication;
+    private final UserAuthInterceptor userAuthInterceptor;
     @GetMapping("getRoleId")
     public Object getRoleId() throws MyAuthException {
-        TokenUser userInfo = userAuthentication.getUserInfo();
+        TokenUser userInfo = userAuthInterceptor.getUserInfo();
         return userInfo;
     }
 }

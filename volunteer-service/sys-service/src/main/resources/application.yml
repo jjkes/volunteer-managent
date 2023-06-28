@@ -30,3 +30,15 @@ volunteer:
   is-open-verify: false
 
 
+eureka:
+  client:
+    service-url:
+      -defaultZone: http://127.0.0.1:10000/eureka
+
+redis:
+  jedis:
+    # reids端口
+    host: localhost
+    # 密码
+    password: 123123
+    port: 6379

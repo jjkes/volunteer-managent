@@ -13,6 +13,7 @@ public enum StateEnum {
     // 登录相关
     LOGIN_FAILED(101,"账号或密码错误"),
     LOGIN_PARAMS(102,"账号或密码为空"),
+    LOGIN_EXPIRES(103,"登录过期"),
     VERIFY_RANDOM_STR_IS_NULL(103,"验证随机码为空"),
     VERIFY_RANDOM_ERROR(114,"验证码错误"),
 

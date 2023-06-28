@@ -12,7 +12,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Map;
 
 /**
 * @discription TODO
@@ -64,16 +63,14 @@ public class JwtTokenUtil {
         return token;
     }
 
-    public static TokenUser getTokenUserFromToken(String token){
+    public static String getTokenUserFromToken(String token){
         JWTVerifier build = JWT.require(Algorithm.HMAC384(JWT_TOKEN_PREFIX)).build();
         DecodedJWT verify = build.verify(token);
-        Claim claim = verify.getClaim("tokenUser");
+        Claim claim = verify.getClaim("redisKey");
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
-        Map map = claim.as(Map.class);
-        TokenUser tokenUser = TokenUser.mapToEntity(map);
-        return tokenUser;
+        return claim.asString();
     }
 
     public static String refreshToken(String token){
@@ -86,18 +83,17 @@ public class JwtTokenUtil {
             return null;
         }
         DecodedJWT verify = build.verify(token);
-        Claim claim = verify.getClaim("tokenUser");
+        Claim claim = verify.getClaim("redisKey");
         if(claim.isNull()){
             throw new JWTDecodeException("无效的token");
         }
-        Map map = claim.as(Map.class);
-        TokenUser tokenUser = TokenUser.mapToEntity(map);
+        String redisKey = claim.asString();
         Instant expires = verify.getExpiresAtAsInstant();
         // 计算还有多长时间到期
         Duration duration = Duration.between(Instant.now(), expires);
         long seconds = duration.toMillis() / 1000;
         if(seconds<=(expireSecond/2)){
-            finalToken = generateToken(tokenUser);
+            finalToken = generateTokenForStr(redisKey);
         }else{
             finalToken = null;
         }
@@ -111,8 +107,8 @@ public class JwtTokenUtil {
         tokenUser.setUsername("dsfsdf");
         String s = generateToken(tokenUser);
         System.err.println("token="+s);
-        TokenUser tokenUserFromToken = getTokenUserFromToken(s);
-        System.err.println(tokenUserFromToken);
+//        TokenUser tokenUserFromToken = getTokenUserFromToken(s);
+//        System.err.println(tokenUserFromToken);
 
 
     }

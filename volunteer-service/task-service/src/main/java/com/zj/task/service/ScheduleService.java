@@ -17,6 +17,7 @@ public interface ScheduleService {
      * @author 赵健
      * @date 2023/5/28 16:44
      */
-    public Result<?> getTaskList(ScheduleTaskEntity scheduleTask,int page,int pageSize);
+    Result<?> getTaskList(ScheduleTaskEntity scheduleTask,int page,int pageSize);
+
 
 }

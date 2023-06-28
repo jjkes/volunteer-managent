@@ -15,6 +15,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/volunteer-service/file-service" />
     <file type="web" url="file://$PROJECT_DIR$/volunteer-service/sys-service" />
+    <type id="Spring" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

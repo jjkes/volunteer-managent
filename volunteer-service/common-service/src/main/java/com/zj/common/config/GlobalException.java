@@ -1,7 +1,8 @@
-package com.zj.sys.config;
+package com.zj.common.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zj.common.constant.StateEnum;
+import com.zj.common.exception.MyAuthException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -33,10 +34,16 @@ public class GlobalException extends Exception {
         }
         return result.toJSON();
     }
+    @ExceptionHandler(value = MyAuthException.class)
+    public JSONObject authFilter(MyAuthException e){
+        e.printStackTrace();
+        return new Result<String>().setResultEnum(StateEnum.LOGIN_EXPIRES).setData(e.getMessage()).toJSON();
+    }
 
     @ExceptionHandler(value = Exception.class)
     public JSONObject normalFilter(Exception e) {
         e.printStackTrace();
         return new Result().setResultEnum(StateEnum.FAILED).toJSON();
     }
+
 }

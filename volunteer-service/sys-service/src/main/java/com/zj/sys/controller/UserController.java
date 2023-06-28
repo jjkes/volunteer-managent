@@ -3,6 +3,7 @@ package com.zj.sys.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.zj.common.annotations.Authentication;
 import com.zj.common.constant.StateEnum;
 import com.zj.common.utils.RedisUtil;
 import com.zj.sys.config.BaseController;
@@ -63,6 +64,7 @@ public class UserController extends ControllerUtils {
      * @date: 2023/1/11 15:55
      */
     @GetMapping(value = "getVerifyImg")
+    @Authentication(type = 0,description = "获取验证码的系统不需要验证权限")
     public JSONObject getVerifyImg(String randomCode, HttpServletResponse response) {
         Result result = new Result();
         // 验证随机码不为空
@@ -102,6 +104,7 @@ public class UserController extends ControllerUtils {
      * @date 2022/9/25 16:55
      */
     @PostMapping(value = "login")
+    @Authentication(type = 0,description = "登录系统不需要验证权限")
     public JSONObject login(@RequestBody LoginUser loginUser, HttpServletResponse response) {
         String s = redisUtil.getStringValue(loginUser.getRandomCode());
         System.err.println(s);
