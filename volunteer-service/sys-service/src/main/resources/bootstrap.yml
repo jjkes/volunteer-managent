@@ -1,4 +1,8 @@
+
 spring:
+  # 选择激活哪一个配置文件，这个配置本地启动时生效，如果使用配置管理器之后便失效，配置管理器中的配置优先于此配置
+  profiles:
+    active: dev
   cloud:
     config:
       uri: http://localhost:8082

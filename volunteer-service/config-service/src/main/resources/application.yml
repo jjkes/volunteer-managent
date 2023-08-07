@@ -1,6 +1,6 @@
 spring:
   application:
-    name: config-single-server  # 应用名称
+    name: config-service  # 应用名称
   cloud:
     config:
       server:
